@@ -83,7 +83,7 @@ let myArr2 = [2,3,4,54,90,3]
 console.log(filterEvenNumbers(myArr2));
 
 
-const anotherObj = [
+const people = [
   {
     name: "sneha",
     age: 20
@@ -102,11 +102,54 @@ const anotherObj = [
   }
 ]
 
-function findYoungest(arr) {
-  arr.forEach((element)=>{
-    let youngest = element[0][age];
-    if (element[age] < youngest) {
-      
+function findYoungest(peopleArr) {
+  let youngest = peopleArr[0]
+  // youngest = {name: "sneha",age: 20}
+
+  for (let i = 1; i < peopleArr.length; i++) {
+    if (peopleArr[i].age < youngest.age) {
+      youngest = peopleArr[i]
     }
-  })
+  }
+  return youngest
 }
+
+
+console.log(findYoungest(people));
+
+
+
+
+function calculate(num1, num2, operation) {
+  if (typeof operation === "function") {
+    return operation(num1,num2)
+  }
+  else {
+    return "Invalid operation"
+  }
+}
+
+
+function add(num1,num2){
+  return num1+num2
+}
+
+function subtract(num1,num2){
+  return num1-num2
+}
+
+function multiply(num1,num2){
+  return num1*num2
+}
+
+function divide(num1,num2){
+  if (num2!==0) {
+    return num1/num2
+  }
+  else {
+    return "Can't divide by zero."
+  }
+}
+
+
+console.log(calculate(2,5,add));
